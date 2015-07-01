@@ -57,7 +57,9 @@
     <Compile Include="Migrations\201506302042032_Initial.Designer.cs">
       <DependentUpon>201506302042032_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Configuration.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebBaseData.cs" />
     <Compile Include="WebBaseDbContext.cs" />
