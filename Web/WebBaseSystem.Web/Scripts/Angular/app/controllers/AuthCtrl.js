@@ -16,13 +16,13 @@ webBaseModule.controller('AuthCtrl',
 
         $scope.register = function (user, form) {
             if (form.$valid) {
-                if (user.Password != user.ConfirmPassword) {
+                if (user.password != user.confirmpassword) {
                     console.log("Pass != Confirm");
                     return;
                 }
 
-                user.Password = sha1.hash(user.password);
-                user.ConfirmPassword = sha1.hash(user.confirmpassword);
+                user.password = sha1.hash(user.password);
+                user.confirmpassword = sha1.hash(user.confirmpassword);
                 var userInfo = {
                     "UserName": user.username,
                     "Email": user.email,
