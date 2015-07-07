@@ -298,6 +298,13 @@
     <Content Include="Scripts\Angular\app\views\partials\register.html" />
     <Content Include="Scripts\Angular\app\views\partials\sum.html" />
     <Content Include="Scripts\Angular\app\views\partials\unautorized.html" />
+    <Content Include="Scripts\Angular\libs\angular-cookies.min.js.map" />
+    <Content Include="Scripts\Angular\libs\angular-resource.min.js.map" />
+    <Content Include="Scripts\Angular\libs\angular-route.min.js.map" />
+    <Content Include="Scripts\Angular\libs\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\Angular\libs\angular.min.js.map" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Icon.png" />
     <Content Include="Scripts\Angular\libs\angular-cookies.js" />
     <Content Include="Scripts\Angular\libs\angular-cookies.min.js" />
     <Content Include="Scripts\Angular\libs\angular-resource.js" />
@@ -308,13 +315,6 @@
     <Content Include="Scripts\Angular\libs\angular-sanitize.min.js" />
     <Content Include="Scripts\Angular\libs\angular.js" />
     <Content Include="Scripts\Angular\libs\angular.min.js" />
-    <Content Include="Scripts\Angular\libs\angular.min.js.map" />
-    <Content Include="Scripts\Angular\libs\angular-route.min.js.map" />
-    <Content Include="Scripts\Angular\libs\angular-sanitize.min.js.map" />
-    <Content Include="Scripts\Angular\libs\angular-resource.min.js.map" />
-    <Content Include="Scripts\Angular\libs\angular-cookies.min.js.map" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
-    <Content Include="Icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
