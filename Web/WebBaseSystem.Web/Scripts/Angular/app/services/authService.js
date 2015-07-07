@@ -36,7 +36,8 @@ webBaseModule.factory('authService', ['$http', '$q',
                     "grant_type": "password",
                     "UserName": user.username,
                     "Password": user.password
-                }
+                },
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })
             .success(function (data) {
                 deferred.resolve(data);
