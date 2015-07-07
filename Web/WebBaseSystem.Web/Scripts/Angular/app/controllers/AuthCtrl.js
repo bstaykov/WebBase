@@ -1,6 +1,8 @@
 ﻿'use strict';
 
-webBaseModule.controller('AuthCtrl', function AuthCtrl($scope, $http, $log, $cookieStore, $routeParams, $resource, $location, authService, sha1) {
+webBaseModule.controller('AuthCtrl',
+    ['$scope', '$http', '$log', '$cookieStore', '$routeParams', '$resource', '$location', 'authService', 'sha1',
+    function AuthCtrl($scope, $http, $log, $cookieStore, $routeParams, $resource, $location, authService, sha1) {
 
         $scope.userLabel = "";
 
@@ -161,5 +163,5 @@ webBaseModule.controller('AuthCtrl', function AuthCtrl($scope, $http, $log, $coo
                 })
                 .catch($log.error);
         }
-    }
+    }]
 );

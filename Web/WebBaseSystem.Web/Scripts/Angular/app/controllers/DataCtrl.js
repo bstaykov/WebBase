@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-webBaseModule.controller('DataCtrl',
+webBaseModule.controller('DataCtrl',['$scope', '$routeParams', 'sumService',
     function DataCtrl($scope, $routeParams, sumService) {
         $scope.sumBtn = function () {
             //$scope.result = sumService.sumNumbers($scope.firstNumber, $scope.secondNumber);
@@ -28,4 +28,4 @@ webBaseModule.controller('DataCtrl',
                     console.log(error);
                 });
         }
-});
+}]);
