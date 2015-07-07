@@ -1,0 +1,24 @@
+﻿<div ng-hide="isLogedIn">
+    <h1>Login Page</h1>
+    <form name="loginForm" class="form-horizontal form-inline">
+        <!--<input class="form-control" type="email" required placeholder="Email" ng-model="user.Name" />
+        <input class="form-control" type="text" ng-pattern="/^[a-zA-Z0-9]{6,100}$/" required placeholder="Password" ng-model="user.Password" />
+        <button class="btn btn-default" ng-click="login(user, login)">Login</button>-->
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input class="form-control" id="username" type="text" ng-pattern="/^[a-zA-Z0-9]{6,100}$/" required placeholder="Username" ng-model="user.username" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input class="form-control" id="password" type="text" ng-pattern="/^[a-zA-Z0-9]{6,100}$/" required placeholder="Password" ng-model="user.password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Log in" class="btn btn-default" ng-click="login(user, loginForm)" />
+            </div>
+        </div>
+    </form>
+</div>

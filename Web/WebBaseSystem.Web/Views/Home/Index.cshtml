@@ -1,24 +1,78 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿<div ng-view>
+
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
+
+@*<div default-directive search="first"></div>
+<div default-directive search="second"></div>
+<div default-directive search="second"></div>
+
+<div ng-controller="DataCtrl">
+    <input ng-model="firstNumber" />
+    <input ng-model="secondNumber" />
+    <button ng-click="sumBtn()">Sum Numbers</button>
+    <h1>Result: {{result}}</h1>
 </div>
+
+<h1 ng-cloak ng-controller="HelloWorldCtrl">
+    {{helloMessage}}
+    <button ng-click="displayBtn()">Click</button>
+</h1>
+<input ng-model="text" />{{text}}
+<hr />
+<div ng-controller="InfoCtrl">
+    <h1 ng-style="customStyle" ng-class="customClass">
+        Some text
+    </h1>
+
+    <h1 ng-bind-html="hello"></h1>
+    <hr />
+    <div ng-bind="hello"></div>
+    <hr />
+    <label for="disable">Disable</label>
+    <input id="disable" type="checkbox" ng-click="disableCar()"/>
+    <label for="car">Car</label>
+    <input id="car" type="checkbox" ng-click="hideMenu()" ng-disabled="isDisabled"/>
+    <input type="text" ng-hide="hasCar"/>
+    Count
+    <input type="text" ng-model="filterModel"/>
+    OrderBy
+    <input type="text" ng-model="orderModel" />
+    Select Order By
+    <select ng-model="orderModel">
+        <option value="text">Text Asc</option>
+        <option value="-text">Text Desc</option>
+        <option value="url">Url Asc</option>
+        <option value="-url">Url Desc</option>
+    </select>
+    <hr />
+    <ul>
+        <li ng-repeat="picture in pictures | limitTo: filterModel | orderBy: orderModel" ng-class-odd="customClass">
+            <ul>
+                <li>{{picture.id}}</li>
+                <li>{{picture.url}}</li>
+                <li>{{picture.text | uppercase}}</li>
+                <li>{{picture.status | statusFilter}}</li>
+            </ul>
+            {{picture | json}}
+        </li>
+    </ul>
+    <hr />
+    <form>
+        <input required type="text" placeholder="First Name" ng-model="user.firstname" />
+        <input type="text" placeholder="Second Name" ng-model="user.secondname" />
+        <input required type="text" placeholder="Last Name" ng-model="user.lastname" />
+        
+        <input type="submit" value="Register" ng-click="registerUser(user)"/>
+    </form>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        function HelloWorldCtrl($scope) {
+            $scope.helloMessage = 'Hello Angular World!!!';
+            $scope.displayBtn = function () {
+                console.log($scope.text);
+            }
+        }
+    </script>
+}*@

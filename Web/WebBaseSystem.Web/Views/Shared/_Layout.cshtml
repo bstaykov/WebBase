@@ -1,9 +1,11 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en" ng-app="webBaseModule" ng-cloak>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @*<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />*@
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -18,24 +20,28 @@
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                </ul>
+            @*<div class="navbar-header">
+                <a class="navbar-brand" href="~/Home/Index">Index</a>
+            </div>*@
+            <div class="navbar-collapse collapse" ng-controller="AuthCtrl">
+                <div ng-include="authLink"></div>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" ng-controller="AuthCtrl">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer ng-controller="InfoCtrl">
+            <p>
+                &copy; {{email}}
+            </p>
         </footer>
     </div>
-
+    @*<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angularLibs")
+    @Scripts.Render("~/bundles/angularContent")
+    @*<script src="~/Scripts/Angular/app/controllers/InfoCtrl.js"></script>*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

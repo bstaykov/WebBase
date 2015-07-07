@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Http;
+    using System.Web.Http.Cors;
     using System.Web.Http.ModelBinding;
 
     using Microsoft.AspNet.Identity;
@@ -339,7 +340,7 @@
                 return this.BadRequest(this.ModelState);
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
+            var user = new User() { UserName = model.Name, Email = model.Email };
 
             IdentityResult result = await this.UserManager.CreateAsync(user, model.Password);
 

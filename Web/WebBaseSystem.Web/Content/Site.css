@@ -15,3 +15,32 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.customClass {
+    color: white;
+    background-color: blue;
+}
+
+.ng-dirty {
+    background-color: #bcd6fe;
+}
+    .ng-dirty .ng-valid-required {
+        background-color: #a6ffab;
+    }
+
+    .ng-dirty .ng-invalid-required {
+        background-color: #fce3ba;
+    }
+
+.ng-valid {
+}
+
+.ng-invalid {
+}
+
+.ng-invalid-required {
+}
+
+form > .ng-dirty{
+    background-color:white;
+}

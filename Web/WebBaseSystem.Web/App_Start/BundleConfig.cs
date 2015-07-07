@@ -8,6 +8,20 @@
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/angularLibs").Include(
+                        "~/Scripts/Angular/libs/angular.min.js",
+                        "~/Scripts/Angular/libs/angular-sanitize.min.js",
+                        "~/Scripts/Angular/libs/angular-cookies.min.js",
+                        "~/Scripts/Angular/libs/angular-route.min.js",
+                        "~/Scripts/Angular/libs/angular-resource.min.js",
+                        "~/Scripts/Angular/app/app.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularContent")
+                .IncludeDirectory("~/Scripts/Angular/app/controllers", "*.js", true)
+                .IncludeDirectory("~/Scripts/Angular/app/services", "*.js", true)
+                .IncludeDirectory("~/Scripts/Angular/app/directives", "*.js", true)
+                .IncludeDirectory("~/Scripts/Angular/app/filters", "*.js", true));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
