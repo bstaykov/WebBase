@@ -34,8 +34,8 @@
     public class RegisterBindingModel
     {
         [Required]
-        [Display(Name = "Name")]
-        public string Name { get; set; }
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
 
         [Required]
         [Display(Name = "Email")]

@@ -2,8 +2,8 @@
 
 webBaseModule.factory('authService', ['$http', '$q',
     function authService($http, $q) {
-        var baseUrl = 'http://webbase.apphb.com/';
-        //var baseUrl = 'http://localhost:50930/';
+        //var baseUrl = 'http://webbase.apphb.com/';
+        var baseUrl = 'http://localhost:50930/';
 
         function register(user) {
             var deferred = $q.defer();
