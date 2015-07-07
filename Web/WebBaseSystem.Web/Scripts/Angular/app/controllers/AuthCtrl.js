@@ -111,8 +111,6 @@ webBaseModule.controller('AuthCtrl', function AuthCtrl($scope, $http, $log, $coo
                     //$location.path('/homePage');
                     $scope.userInfo = {
                         "email": data.email,
-                        "isDriver": data.isDriver,
-                        "car": data.car
                     }
                 })
                 .catch($log.error);
