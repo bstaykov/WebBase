@@ -24,10 +24,10 @@ webBaseModule.controller('AuthCtrl',
                 user.Password = sha1.hash(user.Password);
                 user.ConfirmPassword = sha1.hash(user.ConfirmPassword);
                 var userInfo = {
-                    "username": user.Username,
-                    "email": user.Email,
-                    "password": user.Password,
-                    "confirmPassword": user.ConfirmPassword,
+                    "UserName": user.username,
+                    "Email": user.email,
+                    "Password": user.password,
+                    "ConfirmPassword": user.confirmpassword,
                 }
 
                 console.log(userInfo);

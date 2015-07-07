@@ -24,8 +24,8 @@ webBaseModule.factory('authService', ['$http', '$q',
             var deferred = $q.defer();
             var registerUser = {
                 "grant_type": "password",
-                "username": user.username,
-                "password": user.password
+                "UserName": user.username,
+                "Password": user.password
             };
             console.log(registerUser);
             //$http.post(baseUrl + 'api/users/login', registerUser)
@@ -34,8 +34,8 @@ webBaseModule.factory('authService', ['$http', '$q',
                 method: 'POST',
                 data: {
                     "grant_type": "password",
-                    "username": user.username,
-                    "password": user.password
+                    "UserName": user.username,
+                    "Password": user.password
                 }
             })
             .success(function (data) {
