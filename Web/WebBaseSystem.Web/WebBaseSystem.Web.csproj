@@ -302,6 +302,7 @@
     <Content Include="Scripts\Angular\libs\angular-resource.min.js" />
     <Content Include="Scripts\Angular\libs\angular-route.min.js" />
     <Content Include="Scripts\Angular\libs\angular-sanitize.min.js" />
+    <Content Include="Scripts\Angular\libs\angular.js" />
     <Content Include="Scripts\Angular\libs\angular.min.js" />
     <Content Include="Scripts\Angular\libs\angular.min.js.map" />
     <Content Include="Scripts\Angular\libs\angular-route.min.js.map" />

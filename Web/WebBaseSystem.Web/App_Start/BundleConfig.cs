@@ -9,7 +9,7 @@
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scripts/Angular/libs/angular.min.js"));
+                        "~/Scripts/Angular/libs/angular.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularLibs").Include(
                         "~/Scripts/Angular/libs/angular-sanitize.min.js",
