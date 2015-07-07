@@ -46,7 +46,7 @@
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            BundleTable.EnableOptimizations = false;
+            //BundleTable.EnableOptimizations = false;
         }
     }
 }
