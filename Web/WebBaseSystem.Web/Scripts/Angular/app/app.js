@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource', 'ngRoute', 'ngCookies'])
-    .config(["$routeProvider", function ($routeProvider) {
+    .config(function ($routeProvider) {
         $routeProvider
         .when('/', {
             templateUrl: 'Scripts/Angular/app/views/partials/homePage.html',
@@ -20,6 +20,6 @@ var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource',
         });
 
         $routeProvider.otherwise({ redirectTo: '/' });
-    }])
+    })
     .constant('author', 'Boycho Staykov')
     .constant('email', 'boycho.staykov@gmail.com');

@@ -21,8 +21,8 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             @*<div class="navbar-header">
-                <a class="navbar-brand" href="~/Home/Index">Index</a>
-            </div>*@
+                    <a class="navbar-brand" href="~/Home/Index">Index</a>
+                </div>*@
             <div class="navbar-collapse collapse" ng-controller="AuthCtrl">
                 <div ng-include="authLink"></div>
             </div>
@@ -37,6 +37,7 @@
         </footer>
     </div>
     @*<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>*@
+    @*<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js"></script>*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
