@@ -47,9 +47,14 @@ webBaseModule.controller('AuthCtrl',
             console.log('LOGIN');
             if (form.$valid) {
 
-                $cookieStore.remove('access_token');
-                console.log("cookie deleted manualy");
-                //return;
+                if ($cookieStore.get('access_token')) {
+                    $cookieStore.remove('access_token');
+                    console.log("cookie deleted manualy");
+                    $scope.isLogedIn = false;
+                    $scope.isLogedOut = true;
+
+                    return;
+                }
 
                 if ($cookieStore.get('access_token')) {
                     console.log('COOKIE ALREADY LOGED');
