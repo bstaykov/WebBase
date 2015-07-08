@@ -139,7 +139,7 @@ webBaseModule.controller('AuthCtrl',
             // test
             $cookieStore.put('access_token', userSessionData['access_token']);
 
-            console.log("After login data: " + data);
+            console.log("After login data: " + userSessionData);
             console.log('COOKIE LOGED IN');
 
             console.log("Access_token" + $cookieStore.get('access_token'));
