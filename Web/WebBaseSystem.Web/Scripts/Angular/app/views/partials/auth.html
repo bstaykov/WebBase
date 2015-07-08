@@ -1,35 +1,40 @@
-﻿<!--<div ng-controller="AuthCtrl">
-    <a ng-hide="isLogedOut" href="/#/userInfo">{{userLabel}}</a>
-    <button ng-hide="isLogedOut" ng-click="logout()">Logout</button>
-    <form name="login" ng-hide="isLogedIn">
-        <input type="email" required placeholder="Email" ng-model="user.Name" />
-        <input type="text" ng-pattern="/^[a-zA-Z0-9]{6,100}$/" required placeholder="Password" ng-model="user.Password" />
-        <button ng-click="login(user, login)">Login</button>
-    </form>
-    <a href="/#/register">Register</a>
-    <hr />
-</div>-->
-
-<ul class="nav navbar-nav">
+﻿<ul class="nav navbar-nav">
     <li><a href="/Help/Index">API</a></li>
 
     <li><a href="/">Index</a></li>
     <li><a href="#sum/11/22">Sum</a></li>
 </ul>
-<ul class="nav navbar-nav navbar-right">
-    <li ng-hide="isLogedOut">{{userLabel}} DelUsr
+<ul class="nav navbar-nav navbar-right" ng-controller="AuthCtrl">
+    <li ng-hide="isLogedOut">
         <a href="/#/userInfo">{{userLabel}}</a>
     </li>
-    <li ng-hide="isLogedIn">
+    <!--<li ng-hide="isLogedIn">
         <a href="/#/login">Login</a>
+    </li>-->
+    <li ng-hide="isLogedIn">
+        <form name="loginForm" class="form-horizontal form-inline">
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input class="form-control" id="username" type="text" ng-pattern="/^[a-zA-Z0-9]{6,100}$/" required placeholder="Username" ng-model="user.username" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input class="form-control" id="password" type="password" ng-pattern="/^[a-zA-Z0-9]{6,100}$/" required placeholder="Password" ng-model="user.password" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <a href="/#/" ng-click="login(user, loginForm)">Login</a>
+                </div>
+            </div>
+        </form>
     </li>
+    <li>
     <li ng-hide="isLogedIn">
         <a href="/#/register">Register</a>
     </li>
     <li ng-hide="isLogedOut">
         <a href="/#/logout" ng-click="logout()">Logout</a>
-    </li>
-    <li ng-hide="isLogedIn">
-        <a href="/#/logout" ng-click="logout()">Logout Del</a>
     </li>
 </ul>

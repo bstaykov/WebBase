@@ -81,12 +81,12 @@ webBaseModule.controller('AuthCtrl',
                 authService.login(userInfo)
                     .then(function (data) {
                         logSession(data);
-                        console.log("Data :");
-                        $log.data;
 
                         $scope.isLogedIn = true;
                         $scope.isLogedOut = false;
-                        $scope.userLabel = data.userName;
+                        //$scope.userLabel = data.userName;
+
+                        //$location.path('/');
                     })
                     .catch($log.error);
             }
@@ -111,7 +111,7 @@ webBaseModule.controller('AuthCtrl',
                     $scope.isLogedOut = true;
                     $scope.userLabel = "";
 
-                    //$location.path('/homePage');
+                    //$location.path('/login');
                 })
                 .catch($log.error);;
         }
@@ -141,10 +141,10 @@ webBaseModule.controller('AuthCtrl',
             // test
             $cookieStore.put('access_token', userSessionData['access_token']);
 
-            console.log("After login data: " + userSessionData);
-            console.log('COOKIE LOGED IN');
+            //console.log("After login data: " + userSessionData);
+            //console.log('COOKIE LOGED IN');
 
-            console.log("Access_token" + $cookieStore.get('access_token'));
+            //console.log("Access_token" + $cookieStore.get('access_token'));
         }
 
         // TEST LOG WITH PARAMS

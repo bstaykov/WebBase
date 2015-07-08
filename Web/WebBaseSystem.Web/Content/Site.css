@@ -21,16 +21,14 @@ textarea {
     background-color: blue;
 }
 
-.ng-dirty {
-    background-color: #bcd6fe;
-}
-    .ng-dirty .ng-valid-required {
-        background-color: #a6ffab;
-    }
 
-    .ng-dirty .ng-invalid-required {
-        background-color: #fce3ba;
-    }
+.ng-dirty .ng-valid-required {
+    background-color: #a6ffab;
+}
+
+.ng-dirty .ng-invalid-required {
+    background-color: #fce3ba;
+}
 
 .ng-valid {
 }
@@ -39,8 +37,4 @@ textarea {
 }
 
 .ng-invalid-required {
-}
-
-form > .ng-dirty{
-    background-color:white;
 }
