@@ -25,6 +25,7 @@
                         "~/Scripts/Angular/app/app.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularContent")
+                .Include("~/Scripts/Angular/app/app.js")
                 .IncludeDirectory("~/Scripts/Angular/app/controllers", "*.js", true)
                 .IncludeDirectory("~/Scripts/Angular/app/services", "*.js", true)
                 .IncludeDirectory("~/Scripts/Angular/app/directives", "*.js", true)
