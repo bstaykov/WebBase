@@ -22,12 +22,12 @@ webBaseModule.factory('authService', ['$http', '$q',
 
         function login(user) {
             var deferred = $q.defer();
-            var registerUser = {
-                "grant_type": "password",
-                "UserName": user.username,
-                "Password": user.password
-            };
-            console.log(registerUser);
+            //var registerUser = {
+            //    "grant_type": "password",
+            //    "UserName": user.username,
+            //    "Password": user.password
+            //};
+            //console.log(registerUser);
             //$http.post(baseUrl + 'api/users/login', registerUser)
             $http({
                 url: baseUrl + 'token',

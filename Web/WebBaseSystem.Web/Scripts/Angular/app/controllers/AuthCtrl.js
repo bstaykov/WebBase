@@ -59,9 +59,12 @@ webBaseModule.controller('AuthCtrl',
                 var hashedPassword = sha1.hash(user.password);
 
                 var userInfo = {
-                    "UserName": user.username,
-                    "Password": hashedPassword,
+                    "username": user.username,
+                    "password": hashedPassword,
                 }
+
+                console.log(userInfo);
+
                 authService.login(userInfo)
                     .then(function (data) {
                         logSession(data);
