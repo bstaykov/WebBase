@@ -47,8 +47,8 @@ webBaseModule.controller('AuthCtrl',
             console.log('LOGIN');
             if (form.$valid) {
 
-                //$cookieStore.remove('sessionKey');
-                //console.log("cookie deleted manualy");
+                $cookieStore.remove('access_token');
+                console.log("cookie deleted manualy");
                 //return;
 
                 if ($cookieStore.get('access_token')) {
