@@ -35,7 +35,8 @@ webBaseModule.factory('authService', ['$http', '$q',
                 data: {
                     "grant_type": "password",
                     "UserName": user.username,
-                    "Password": user.password
+                    "Password": user.password,
+                    "Content-Type": "application/x-www-form-urlencoded",
                 },
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })

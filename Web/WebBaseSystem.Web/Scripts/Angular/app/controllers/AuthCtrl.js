@@ -21,13 +21,12 @@ webBaseModule.controller('AuthCtrl',
                     return;
                 }
 
-                user.password = sha1.hash(user.password);
-                user.confirmpassword = sha1.hash(user.confirmpassword);
+                var hashedPassword = sha1.hash(user.password);
                 var userInfo = {
                     "UserName": user.username,
                     "Email": user.email,
-                    "Password": user.password,
-                    "ConfirmPassword": user.confirmpassword,
+                    "Password": hashedPassword,
+                    "ConfirmPassword": hashedPassword,
                 }
 
                 console.log(userInfo);
@@ -57,8 +56,13 @@ webBaseModule.controller('AuthCtrl',
                     //$location.path('/logInLogOut');
                     return;
                 }
-                user.password = sha1.hash(user.password);
-                authService.login(user)
+                var hashedPassword = sha1.hash(user.password);
+
+                var userInfo = {
+                    "UserName": user.username,
+                    "Password": hashedPassword,
+                }
+                authService.login(userInfo)
                     .then(function (data) {
                         logSession(data);
                         console.log("Data : " + $log.data);
