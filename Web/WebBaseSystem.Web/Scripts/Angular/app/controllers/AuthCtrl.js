@@ -10,6 +10,11 @@ webBaseModule.controller('AuthCtrl',
         $scope.isLogedIn = false;
         $scope.isLogedOut = true;
 
+        if ($cookieStore.get('access_token')) {
+            $scope.isLogedIn = true;
+            $scope.isLogedOut = false;
+        }
+
         $scope.userInfo;
 
         $scope.authLink = 'Scripts/Angular/app/views/partials/auth.html';
