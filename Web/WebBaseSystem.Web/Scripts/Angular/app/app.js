@@ -12,6 +12,9 @@ var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource',
         .when('/login', {
             templateUrl: 'Scripts/Angular/app/views/partials/login.html'
         })
+        .when('/logout', {
+            templateUrl: 'Scripts/Angular/app/views/partials/homePage.html'
+        })
         .when('/sum/:firstNumber/:secondNumber', {
             templateUrl: 'Scripts/Angular/app/views/partials/sum.html'
         })
