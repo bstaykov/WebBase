@@ -63,6 +63,7 @@ webBaseModule.controller('AuthCtrl',
                     $scope.isLogedOut = false;
                     return;
                 }
+
                 var hashedPassword = sha1.hash(user.password);
 
                 var userInfo = {
@@ -75,14 +76,15 @@ webBaseModule.controller('AuthCtrl',
                 authService.login(userInfo)
                     .then(function (data) {
                         logSession(data);
-                        console.log("Data : " + $log.data);
+                        console.log("Data :");
+                        $log.data;
 
                         //$location.path('/getPosts');
                         $scope.isLogedIn = true;
                         $scope.isLogedOut = false;
                         $scope.userLabel = data.userName;
                     })
-                    .catch("ERROR : " + $log.error);
+                    .catch($log.error);
             }
             if (form.$invalid) {
                 console.log("Not valid form");

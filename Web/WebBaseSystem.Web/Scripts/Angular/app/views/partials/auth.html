@@ -13,7 +13,7 @@
 <ul class="nav navbar-nav">
     <li><a href="/Help/Index">API</a></li>
 
-    <li><a href="~/">Index</a></li>
+    <li><a href="/">Index</a></li>
     <li><a href="#sum/11/22">Sum</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -28,5 +28,8 @@
     </li>
     <li ng-hide="isLogedOut">
         <a ng-click="logout()">Logout</a>
+    </li>
+    <li ng-hide="isLogedIn">
+        <a ng-click="logout()">Logout Del</a>
     </li>
 </ul>
