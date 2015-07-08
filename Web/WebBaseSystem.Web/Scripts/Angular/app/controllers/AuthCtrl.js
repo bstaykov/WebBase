@@ -63,9 +63,9 @@ webBaseModule.controller('AuthCtrl',
 
                 if ($cookieStore.get('access_token')) {
                     console.log('COOKIE ALREADY LOGED');
-                    //$location.path('/logInLogOut');
                     $scope.isLogedIn = true;
                     $scope.isLogedOut = false;
+                    //$location.path('/home');
                     return;
                 }
 
@@ -84,7 +84,6 @@ webBaseModule.controller('AuthCtrl',
                         console.log("Data :");
                         $log.data;
 
-                        //$location.path('/getPosts');
                         $scope.isLogedIn = true;
                         $scope.isLogedOut = false;
                         $scope.userLabel = data.userName;
@@ -108,15 +107,11 @@ webBaseModule.controller('AuthCtrl',
                     console.log(data);
                     $cookieStore.remove('access_token');
                     console.log('COOKIE LOGED OUT');
-                    //$location.path('/homePage');
                     $scope.isLogedIn = false;
                     $scope.isLogedOut = true;
                     $scope.userLabel = "";
-                    $scope.userInfo = {
-                        "email": "",
-                        "isDriver": false,
-                        "car": ""
-                    }
+
+                    //$location.path('/homePage');
                 })
                 .catch($log.error);;
         }
