@@ -54,6 +54,9 @@ webBaseModule.controller('AuthCtrl',
                 if ($cookieStore.get('access_token')) {
                     console.log('COOKIE ALREADY LOGED');
                     //$location.path('/logInLogOut');
+                    $scope.isLogedIn = true;
+                    $scope.isLogedOut = false;
+                    $scope.userLabel = data.userName;
                     return;
                 }
                 var hashedPassword = sha1.hash(user.password);
