@@ -1,6 +1,6 @@
 ﻿<div>
     <h1>Login Page</h1>
-    <form name="loginForm" class="form-horizontal form-inline">
+    <form ng-hide="isLogedIn" name="loginForm" class="form-horizontal form-inline">
         <div class="form-group">
             <div class="col-md-10">
                 <input class="form-control" id="username" type="text" ng-pattern="/^[a-zA-Z0-9]{6,100}$/" required placeholder="Username" ng-model="user.username" />
@@ -13,9 +13,11 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <a href="/#/" ng-click="login(user, loginForm)">Login</a>
                 <input type="button" value="Log in" class="btn btn-default" ng-click="login(user, loginForm)" />
             </div>
         </div>
     </form>
+    <h2 ng-show="isLogedIn">
+        You are logged in!
+    </h2>
 </div>

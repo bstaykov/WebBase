@@ -6,6 +6,9 @@ var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource',
         .when('/', {
             templateUrl: 'Scripts/Angular/app/views/partials/homePage.html',
         })
+        .when('/home', {
+            templateUrl: 'Scripts/Angular/app/views/partials/homePage.html',
+        })
         .when('/register', {
             templateUrl: 'Scripts/Angular/app/views/partials/register.html'
         })

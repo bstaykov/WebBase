@@ -5,24 +5,19 @@ webBaseModule.controller('AuthCtrl',
     function AuthCtrl($scope, $http, $log, $cookieStore, $routeParams, $resource, $location, authService, sha1) {
 
         $scope.userLabel = "";
-
         $location.path("/");
         $scope.isLogedIn = false;
-        $scope.isLogedOut = true;
 
         if ($cookieStore.get('access_token')) {
             $scope.isLogedIn = true;
-            $scope.isLogedOut = false;
         }
 
         $scope.userInfo;
-
         $scope.authLink = 'Scripts/Angular/app/views/partials/auth.html';
 
         $scope.register = function (user, form) {
             if (form.$valid) {
                 if (user.password != user.confirmpassword) {
-                    console.log("Pass != Confirm");
                     return;
                 }
 
@@ -33,12 +28,9 @@ webBaseModule.controller('AuthCtrl',
                     "Password": hashedPassword,
                     "ConfirmPassword": hashedPassword,
                 }
-
-                console.log(userInfo);
-
                 authService.register(userInfo)
                     .then(function (data) {
-                        console.log(data);
+                        //console.log(data);
                         $location.path('/');
                     })
                     .catch($log.error);
@@ -49,44 +41,23 @@ webBaseModule.controller('AuthCtrl',
         }
 
         $scope.login = function (user, form) {
-            console.log('LOGIN');
             if (form.$valid) {
-
                 if ($cookieStore.get('access_token')) {
-                    $cookieStore.remove('access_token');
-                    console.log("cookie deleted manualy");
-                    $scope.isLogedIn = false;
-                    $scope.isLogedOut = true;
-
-                    return;
-                }
-
-                if ($cookieStore.get('access_token')) {
-                    console.log('COOKIE ALREADY LOGED');
                     $scope.isLogedIn = true;
-                    $scope.isLogedOut = false;
-                    //$location.path('/home');
+                    $location.path('/home');
                     return;
                 }
-
                 var hashedPassword = sha1.hash(user.password);
-
                 var userInfo = {
                     "username": user.username,
                     "password": hashedPassword,
                 }
-
-                console.log(userInfo);
-
                 authService.login(userInfo)
                     .then(function (data) {
                         logSession(data);
-
                         $scope.isLogedIn = true;
-                        $scope.isLogedOut = false;
-                        //$scope.userLabel = data.userName;
-
-                        //$location.path('/');
+                        $scope.userLabel = data.userName;
+                        $location.path('/home');
                     })
                     .catch($log.error);
             }
@@ -98,20 +69,19 @@ webBaseModule.controller('AuthCtrl',
         $scope.logout = function () {
             // test
             if (!$cookieStore.get('access_token')) {
-                console.log('COOKIE NOT LOGED');
+                $scope.userLabel = '';
+                //console.log('COOKIE NOT LOGED');
                 return;
             }
 
             authService.logout($cookieStore.get('access_token'))
                 .then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     $cookieStore.remove('access_token');
-                    console.log('COOKIE LOGED OUT');
+                    //console.log('COOKIE LOGED OUT');
                     $scope.isLogedIn = false;
-                    $scope.isLogedOut = true;
                     $scope.userLabel = "";
-
-                    //$location.path('/login');
+                    $location.path('/home');
                 })
                 .catch($log.error);;
         }
@@ -119,13 +89,13 @@ webBaseModule.controller('AuthCtrl',
         $scope.userInfo = function () {
             // test
             if (!$cookieStore.get('access_token')) {
-                console.log('COOKIE NOT LOGED');
+                //console.log('COOKIE NOT LOGED');
                 return;
             }
 
             authService.userInfo($cookieStore.get('access_token'))
                 .then(function (data) {
-                    console.log(data);
+                    //console.log(data);
                     //$location.path('/homePage');
                     $scope.userInfo = {
                         "email": data.email,
@@ -175,7 +145,7 @@ webBaseModule.controller('AuthCtrl',
                     console.log('COOKIE LOGED IN');
                     //$location.path('/getPosts');
                     $scope.isLogedIn = true;
-                    $scope.isLogedOut = false;
+                    //$scope.isLogedOut = false;
                 })
                 .catch($log.error);
         }

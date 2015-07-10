@@ -1,13 +1,12 @@
 ﻿<div>
     <h1>Register Page</h1>
-    <form name="registration" class="form-horizontal">
+    <form ng-hide="isLogedIn" name="registration" class="form-horizontal">
         <div class="form-group">
             <label class="col-md-2 control-label" for="username">UserName</label>
             <div class="col-md-10">
                 <input class="form-control" id="username" type="text" ng-pattern="/^[a-zA-Z0-9]{6,100}$/" required placeholder="UserName" ng-model="user.username" /><br />
             </div>
         </div>
-
         <div class="form-group">
             <label class="col-md-2 control-label" for="email">Email</label>
             <div class="col-md-10">
@@ -25,13 +24,15 @@
             <div class="col-md-10">
                 <input class="form-control" id="confirm" type="password" ng-pattern="/^[a-zA-Z0-9]{6,100}$/" required placeholder="ConfirmPassword" ng-model="user.confirmpassword" /><br />
             </div>
-        </div>        
+        </div>
         <br />
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" class="btn btn-default" value="Register" ng-click="register(user, registration)" />
             </div>
         </div>
     </form>
+    <h2 ng-show="isLogedIn">
+        You are logged in!
+    </h2>
 </div>
