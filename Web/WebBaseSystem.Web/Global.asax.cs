@@ -9,10 +9,14 @@
     using System.Web.Optimization;
     using System.Web.Routing;
 
+    using WebBaseSystem.Web.App_Start;
+
     public class WebApiApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
+            ViewenginesConfiguration.RegisterViewEngines(ViewEngines.Engines);
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
