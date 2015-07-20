@@ -27,7 +27,7 @@
                 throw new ArgumentNullException("publicClientId");
             }
 
-            publicClientId = publicClientId;
+            this.publicClientId = publicClientId;
         }
 
         public static AuthenticationProperties CreateProperties(string userName)
