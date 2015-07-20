@@ -1,0 +1,21 @@
+﻿<div ng-controller="ImagesCtrl">
+    <h1>Add Image Page</h1>
+    <form name="addImage" class="form-horizontal">
+        <!--<div class="form-group">
+            <label class="col-md-2 control-label">Image</label>
+            <div class="col-md-10">
+                <span class="btn btn-default btn-file">
+                    Browse... <input type="file" id="pictureToCheck" ng-model="image">
+                </span>
+            </div>
+        </div>-->
+        <br />
+        <input type="file" file-model="image" id="pictureToCheck"/>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Save" ng-click="add(image, 'pictureToCheck', addImage)" />
+            </div>
+        </div>
+    </form>
+</div>

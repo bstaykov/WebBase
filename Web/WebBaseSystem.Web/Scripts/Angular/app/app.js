@@ -18,6 +18,9 @@ var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource',
         .when('/logout', {
             templateUrl: 'Scripts/Angular/app/views/partials/homePage.html'
         })
+        .when('/addImage', {
+            templateUrl: 'Scripts/Angular/app/views/partials/addImage.html'
+        })
         .when('/sum/:firstNumber/:secondNumber', {
             templateUrl: 'Scripts/Angular/app/views/partials/sum.html'
         })
@@ -27,5 +30,7 @@ var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource',
 
         $routeProvider.otherwise({ redirectTo: '/' });
     }])
+    .constant('localhostUrl', 'http://localhost:50930/')
+    .constant('baseUrl', 'http://webbase.apphb.com/')
     .constant('author', 'Boycho Staykov')
     .constant('email', 'boycho.staykov@gmail.com');

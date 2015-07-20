@@ -1,7 +1,7 @@
 ﻿<div>
     <ul class="nav navbar-nav">
-        <li><a href="/Help/Index">API</a></li>
-        <li><a href="/#/">Home</a></li>
+        <li ng-show="isLogedIn"><a href="/Help/Index">API</a></li>
+        <li ng-show="isLogedIn"><a href="/#/addImage">Add Image</a></li>
         <li><a href="#sum/11/22">Sum</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">

@@ -13,7 +13,7 @@ webBaseModule.controller('AuthCtrl',
         }
 
         $scope.userInfo;
-        $scope.authLink = 'Scripts/Angular/app/views/partials/auth.html';
+        $scope.navigationMenu = 'Scripts/Angular/app/views/partials/navigationMenu.html';
 
         $scope.register = function (user, form) {
             if (form.$valid) {

@@ -1,15 +1,12 @@
 ﻿namespace WebBaseSystem.Web.Controllers
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Net.Http;
     using System.Web.Http;
     using System.Web.Http.Cors;
     using System.Web.OData;
 
-    public class ValuesController : ApiController
+    public class ValuesController : BaseController
     {
         [HttpGet]
         public long Sum(int firstNumber, int secondNumber)

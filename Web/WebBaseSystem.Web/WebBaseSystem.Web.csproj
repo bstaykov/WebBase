@@ -112,6 +112,27 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.ContextPreservation">
+      <HintPath>..\..\packages\Ninject.Extensions.ContextPreservation.3.2.0.0\lib\net45-full\Ninject.Extensions.ContextPreservation.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.NamedScope">
+      <HintPath>..\..\packages\Ninject.Extensions.NamedScope.3.2.0.0\lib\net45-full\Ninject.Extensions.NamedScope.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.OwinHost">
+      <HintPath>..\..\packages\Ninject.Web.Common.OwinHost.3.2.3.0\lib\net45-full\Ninject.Web.Common.OwinHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi">
+      <HintPath>..\..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi.OwinHost">
+      <HintPath>..\..\packages\Ninject.Web.WebApi.OwinHost.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.OwinHost.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -233,7 +254,9 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -282,18 +305,22 @@
     <Content Include="Scripts\Angular\app\app.js" />
     <Content Include="Scripts\Angular\app\controllers\AuthCtrl.js" />
     <Content Include="Scripts\Angular\app\controllers\DataCtrl.js" />
+    <Content Include="Scripts\Angular\app\controllers\ImagesCtrl.js" />
     <Content Include="Scripts\Angular\app\controllers\InfoCtrl.js" />
     <Content Include="Scripts\Angular\app\controllers\SomeCtrl.js" />
     <Content Include="Scripts\Angular\app\directives\defaultDirective.js" />
+    <Content Include="Scripts\Angular\app\directives\fileModel.js" />
     <Content Include="Scripts\Angular\app\filters\statusFilter.js" />
     <Content Include="Scripts\Angular\app\services\authService.js" />
+    <Content Include="Scripts\Angular\app\services\imagesService.js" />
     <Content Include="Scripts\Angular\app\services\sha1.js" />
     <Content Include="Scripts\Angular\app\services\sumService.js" />
     <Content Include="Scripts\Angular\app\views\directives\defaultDir.html" />
-    <Content Include="Scripts\Angular\app\views\partials\auth.html" />
+    <Content Include="Scripts\Angular\app\views\partials\navigationMenu.html" />
     <Content Include="Scripts\Angular\app\views\partials\error.html" />
     <Content Include="Scripts\Angular\app\views\partials\default.html" />
     <Content Include="Scripts\Angular\app\views\partials\homePage.html" />
+    <Content Include="Scripts\Angular\app\views\partials\addImage.html" />
     <Content Include="Scripts\Angular\app\views\partials\login.html" />
     <Content Include="Scripts\Angular\app\views\partials\register.html" />
     <Content Include="Scripts\Angular\app\views\partials\sum.html" />
@@ -317,6 +344,7 @@
     <Content Include="Scripts\Angular\libs\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom\imagesValidations.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
@@ -348,7 +376,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Images\" />
     <Folder Include="Scripts\Angular\content\" />
   </ItemGroup>
   <ItemGroup>

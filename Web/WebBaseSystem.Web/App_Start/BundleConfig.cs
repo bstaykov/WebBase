@@ -8,6 +8,9 @@
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                        "~/Scripts/custom/imagesValidations.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/angularLibs").Include(
                         "~/Scripts/Angular/libs/angular.js",
                         "~/Scripts/Angular/libs/angular-sanitize.js",
@@ -47,7 +50,7 @@
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            //BundleTable.EnableOptimizations = false;
+            // BundleTable.EnableOptimizations = false;
         }
     }
 }
