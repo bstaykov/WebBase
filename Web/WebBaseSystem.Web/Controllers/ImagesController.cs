@@ -7,11 +7,17 @@
     using System.Linq;
     using System.Web;
     using System.Web.Http;
+    using WebBaseSystem.Data;
     using WebBaseSystem.Models;
 
     [Authorize]
     public class ImagesController : BaseController
     {
+        public ImagesController(IWebBaseData data)
+            : base(data)
+        {
+        }
+
         public IEnumerable<Picture> GetAll()
         {
             var pictures = this.Data.Pictures.All();

@@ -7,11 +7,10 @@
     {
         protected readonly IWebBaseData Data;
 
-        public BaseController()
-            : this(new WebBaseData(new WebBaseDbContext()))
-        {
-        }
-
+        // public BaseController()
+        // : this(new WebBaseData(new WebBaseDbContext()))
+        // {
+        // }
         public BaseController(IWebBaseData data)
         {
             this.Data = data;

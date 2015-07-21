@@ -5,9 +5,15 @@
     using System.Web.Http;
     using System.Web.Http.Cors;
     using System.Web.OData;
+    using WebBaseSystem.Data;
 
     public class ValuesController : BaseController
     {
+        public ValuesController(IWebBaseData data)
+            : base(data)
+        {
+        }
+
         [HttpGet]
         public long Sum(int firstNumber, int secondNumber)
         {
