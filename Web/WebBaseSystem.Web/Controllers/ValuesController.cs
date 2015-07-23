@@ -7,12 +7,12 @@
     using System.Web.OData;
     using WebBaseSystem.Data;
 
-    public class ValuesController : BaseController
+    public class ValuesController : BaseApiController
     {
-        public ValuesController(IWebBaseData data)
-            : base(data)
-        {
-        }
+        //public ValuesController(IWebBaseData data)
+        //    : base(data)
+        //{
+        //}
 
         [HttpGet]
         public long Sum(int firstNumber, int secondNumber)
