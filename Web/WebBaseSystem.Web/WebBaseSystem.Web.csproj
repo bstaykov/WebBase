@@ -256,6 +256,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\Images\BodyPart_94f92e6e-6823-4e1e-b963-ed180392ee2b.jpg" />
+    <Content Include="Files\Images\BodyPart_df9dcba6-a03a-4ed5-b168-402f0d7f4b6b.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -361,7 +363,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Files\Images\" />
     <Folder Include="Scripts\Angular\content\" />
   </ItemGroup>
   <ItemGroup>
