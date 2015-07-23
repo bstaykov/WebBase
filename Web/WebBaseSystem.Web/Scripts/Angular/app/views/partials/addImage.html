@@ -1,21 +1,42 @@
 ﻿<div ng-controller="ImagesCtrl">
-    <h1>Add Image Page</h1>
-    <form name="addImage" class="form-horizontal">
-        <!--<div class="form-group">
-            <label class="col-md-2 control-label">Image</label>
+    <h1>Add Image</h1>
+    <form name="addImage" class="form-horizontal" method="post" enctype="multipart/form-data" action="Api/Images/Add">
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="title">Title</label>
+            <div class="col-md-10">
+                <input class="form-control" id="title" type="text" required placeholder="Title" name="title" ng-model="title" /><br />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="file" class="col-md-2 control-label">Image</label>
             <div class="col-md-10">
                 <span class="btn btn-default btn-file">
-                    Browse... <input type="file" id="pictureToCheck" ng-model="image">
+                    Browse... <input type="file" name="file" id="file" file-model="image">
                 </span>
             </div>
-        </div>-->
-        <br />
-        <input type="file" file-model="image" id="pictureToCheck"/>
-        <br />
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Save" ng-click="add(image, 'pictureToCheck', addImage)" />
+                <input class="btn btn-default" value="Save" ng-click="add(image, title, 'file', addImage)" />
             </div>
         </div>
     </form>
 </div>
+
+<!--<h1>Standart</h1>
+
+<div>
+    <form name="form1" method="post" enctype="multipart/form-data" action="api/images/PostFormData">
+        <div>
+            <label for="title">Title</label>
+            <input name="title" type="text" />
+        </div>
+        <div>
+            <label for="file">Image</label>
+            <input name="file" type="file" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+</div>-->

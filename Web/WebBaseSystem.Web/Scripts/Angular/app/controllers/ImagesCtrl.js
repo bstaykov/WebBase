@@ -3,26 +3,34 @@
 webBaseModule.controller('ImagesCtrl',
     ['$scope', '$http', '$log', '$cookieStore', '$routeParams', '$resource', '$location', 'imagesService',
     function ImagesCtrl($scope, $http, $log, $cookieStore, $routeParams, $resource, $location, imagesService) {
-        $scope.getAll = function () {
-            imagesService.getAll(image)
-                    .then(function (data) {
-                        console.log(data);
-                        console.log('GET ALL');
-                    })
-                    .catch($log.error);
+        $scope.images;
+
+        function updatePictures() {
+            imagesService.getAll($cookieStore.get('access_token'))
+                            .then(function (data) {
+                                $scope.images = data;
+                            })
+                            .catch($log.error);
         }
 
-        $scope.add = function (image, id, form) {
+        updatePictures();
+
+        $scope.getAll = function () {
+            updatePictures();
+        }
+
+        $scope.add = function (image, title, id, form) {
             if (form.$valid) {
                 var isSizeCorrect = checkImageSize(id),
                     isCorrectFileFormat = checkFileExtension(id);
                 if (isSizeCorrect && isCorrectFileFormat) {
                     var input = document.getElementById(id);
                     var image = input.files[0];
-                    imagesService.add(image)
+                    imagesService.add(image, title, $cookieStore.get('access_token'))
                         .then(function (data) {
                             console.log(data);
                             console.log('ADDED');
+                            $location.path('/getAllImages');
                         })
                         .catch($log.error);
                 } else {
@@ -34,10 +42,22 @@ webBaseModule.controller('ImagesCtrl',
             }
         }
 
-        $scope.delete = function (id) {
-            if (form.$valid) {
-                imagesService.deleteById(id)
+        $scope.id = $routeParams.id;
+        if ($scope.id) {
+            imagesService.deleteById($scope.id, $cookieStore.get('access_token'))
                     .then(function (data) {
+                        console.log('DELETE');
+                        $location.path('/getAllImages');
+                    })
+                    .catch($log.error);
+        }
+
+        $scope.delete = function (id, form) {
+            console.log("Id: " + id);
+            if (form.$valid) {
+                imagesService.deleteById(id, $cookieStore.get('access_token'))
+                    .then(function (data) {
+                        updatePictures();
                         console.log('DELETE');
                     })
                     .catch($log.error);
@@ -48,9 +68,11 @@ webBaseModule.controller('ImagesCtrl',
         }
 
         $scope.deleteAll = function () {
-            imagesService.deleteAll()
+            imagesService.deleteAll($cookieStore.get('access_token'))
                     .then(function (data) {
+                        updatePictures();
                         console.log('DELETE ALL');
+                        //$location.path('/getAllImages');
                     })
                     .catch($log.error);
         }

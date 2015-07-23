@@ -1,0 +1,27 @@
+﻿<div ng-controller="ImagesCtrl">
+    <div>
+        <ul>
+            <li><a href="#/addImage">Add Image</a></li>
+            <li><a href="#/getAllImages">GetAll</a></li>
+            <li><a ng-click="getAll()" href="#/getAllImages">GetAll</a></li>
+            <!--<li ng-show="isLogedIn"><a ng-click="getAll()" href="#/getAllImages">GetAll</a></li>-->
+            <li><a ng-click="deleteAll()" href="#/getAllImages">DeleteAll</a></li>
+        </ul>
+    </div>
+    
+    <hr />
+    <div>
+        <ul>
+            <li ng-repeat="image in images">
+                <span>Id: {{image.Id}}</span>
+                <span>Title: {{image.Title}}</span>
+                <img src="/Files/Images/{{image.Url}}" height="20" width="20" />
+                <form name="deleteForm">
+                    <a ng-click="delete(image.Id, deleteForm)" href="">Delete Me</a>
+                    <input type="submit" class="btn btn-default" value="Delete Me" ng-click="delete(image.Id, deleteForm)" />
+                    <!--<a href="#delete/{{image.Id}}">Del</a>-->
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

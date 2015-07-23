@@ -13,7 +13,7 @@ webBaseModule.controller('AuthCtrl',
         }
 
         $scope.userInfo;
-        $scope.navigationMenu = 'Scripts/Angular/app/views/partials/navigationMenu.html';
+        $scope.navigationMenu = '/Scripts/Angular/app/views/partials/navigationMenu.html';
 
         $scope.register = function (user, form) {
             if (form.$valid) {

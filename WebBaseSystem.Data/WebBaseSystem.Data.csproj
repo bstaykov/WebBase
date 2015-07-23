@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201507102034581_PicUrl.Designer.cs">
       <DependentUpon>201507102034581_PicUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201507211521294_PictureTitle.cs" />
+    <Compile Include="Migrations\201507211521294_PictureTitle.Designer.cs">
+      <DependentUpon>201507211521294_PictureTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -88,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507102034581_PicUrl.resx">
       <DependentUpon>201507102034581_PicUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507211521294_PictureTitle.resx">
+      <DependentUpon>201507211521294_PictureTitle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

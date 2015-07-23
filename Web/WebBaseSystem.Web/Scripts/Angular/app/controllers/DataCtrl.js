@@ -2,6 +2,8 @@
 
 webBaseModule.controller('DataCtrl',['$scope', '$routeParams', 'sumService',
     function DataCtrl($scope, $routeParams, sumService) {
+        $scope.sum;
+
         $scope.sumBtn = function () {
             //$scope.result = sumService.sumNumbers($scope.firstNumber, $scope.secondNumber);
 
@@ -15,7 +17,6 @@ webBaseModule.controller('DataCtrl',['$scope', '$routeParams', 'sumService',
                     });
             }
         }
-
         
         $scope.firstNumber = $routeParams.firstNumber;
         $scope.secondNumber = $routeParams.secondNumber;

@@ -1,7 +1,9 @@
 ﻿<div>
     <ul class="nav navbar-nav">
         <li ng-show="isLogedIn"><a href="/Help/Index">API</a></li>
-        <li ng-show="isLogedIn"><a href="/#/addImage">Add Image</a></li>
+        <li ng-show="isLogedIn"><a href="#/addImage">Add Image</a></li>
+        <li ng-show="isLogedIn"><a href="#/getAllImages">GetAll</a></li>
+        <!--<li ng-show="isLogedIn"><a ng-click="getAll()" href="#/getAllImages">GetAll</a></li>-->
         <li><a href="#sum/11/22">Sum</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -32,12 +34,6 @@
                 </div>
             </form>
         </li>
-        <!--<li ng-hide="isLogedIn">
-            <a href="/#/" ng-click="login(user, loginForm)">Login</a>
-        </li>
-        <li ng-hide="isLogedIn">
-            <a href="/#/register">Register</a>
-        </li>-->
         <li ng-show="isLogedIn">
             <a href="" ng-click="logout()">Logout</a>
         </li>

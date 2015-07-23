@@ -2,64 +2,103 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Drawing;
     using System.IO;
     using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
     using System.Web;
     using System.Web.Http;
     using WebBaseSystem.Data;
     using WebBaseSystem.Models;
 
     [Authorize]
-    public class ImagesController : BaseController
+    public class ImagesController : BaseApiController
     {
-        public ImagesController(IWebBaseData data)
-            : base(data)
+        // public ImagesController(IWebBaseData data)
+        // : base(data)
+        // {
+        // }
+        [HttpGet]
+        public IHttpActionResult GetAll()
         {
-        }
-
-        public IEnumerable<Picture> GetAll()
-        {
-            var pictures = this.Data.Pictures.All();
-
-            return pictures;
+            var pictures = this.Data.Pictures.All().ToArray();
+            return this.Ok(pictures);
         }
 
         [HttpPost]
-        public IHttpActionResult Add()
+        public async Task<HttpResponseMessage> Add()
         {
-            var httpRequest = HttpContext.Current.Request;
-            if (httpRequest.Files.Count > 0)
+            // Check if the request contains multipart/form-data.
+            if (!Request.Content.IsMimeMultipartContent())
             {
-                foreach (string file in httpRequest.Files)
-                {
-                    var postedFile = httpRequest.Files[file];
-                }
-
-                return this.Ok();
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
 
-            return this.BadRequest();
+            string root = HttpContext.Current.Server.MapPath("~/Files/Images/");
+            var provider = new MultipartFormDataStreamProvider(root);
 
-            // if (ModelState.IsValid)
-            // {
-            // string url = this.SavePic(image);
+            try
+            {
+                // Read the form data.
+                await Request.Content.ReadAsMultipartAsync(provider);
 
-            // if (url != null)
-            // {
-            // var pictureEntity = new Picture()
-            // {
-            // Url = url,
-            // };
+                bool isSaved = false;
+                var newName = string.Empty;
+                Picture picture = new Picture();
 
-            // this.Data.Pictures.Add(pictureEntity);
-            // this.Data.SaveChanges();
+                foreach (MultipartFileData file in provider.FileData)
+                {
+                    var fileName = file.Headers.ContentDisposition.FileName;
+                    var extensionStartIndex = fileName.LastIndexOf('.') + 1;
+                    var extensionEndIndex = fileName.LastIndexOf('"');
+                    var extension = fileName.Substring(extensionStartIndex, extensionEndIndex - extensionStartIndex);
+                    if(this.IsValidExtension(extension)){
+                        newName = file.LocalFileName + '.' + extension;
+                        File.Move(file.LocalFileName, newName);
+                        string url = newName.Substring(newName.LastIndexOf("\\") + 1);
+                        picture.Url = url;
+                        isSaved = true;
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    }
+                }
 
-            // return this.Ok(url);
-            // }
-            // }
+                bool isTitleCorrect = false;
+                foreach (var key in provider.FormData.AllKeys)
+                {
+                    foreach (var val in provider.FormData.GetValues(key))
+                    {
+                        if (string.IsNullOrEmpty(val) == false) {
+                            picture.Title = val;
+                            isTitleCorrect = true;
+                        }
+                        else if (isSaved)
+                        {
+                            File.Delete(newName);
+                            return Request.CreateResponse(HttpStatusCode.BadRequest);
+                        }
+                    }
+                }
 
-            // return this.BadRequest();
+                if (isSaved && isTitleCorrect)
+                {
+                    this.Data.Pictures.Add(picture);
+                    this.Data.SaveChanges();
+
+                    return Request.CreateResponse(HttpStatusCode.OK);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            catch (System.Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
         }
 
         [HttpDelete]
@@ -70,7 +109,8 @@
             {
                 this.Data.Pictures.Delete(picture);
                 this.Data.SaveChanges();
-                File.Delete(picture.Url);
+                string root = HttpContext.Current.Server.MapPath("~/Files/Images/");
+                File.Delete(root + picture.Url);
                 return this.Ok();
             }
 
@@ -87,7 +127,8 @@
                 if (picture != null)
                 {
                     this.Data.Pictures.Delete(picture);
-                    File.Delete(picture.Url);
+                    string root = HttpContext.Current.Server.MapPath("~/Files/Images/");
+                    File.Delete(root + picture.Url);
                 }
             }
 
@@ -105,7 +146,7 @@
                     Image image = Image.FromStream(newImage.InputStream);
                     string fileName = Guid.NewGuid().ToString();
                     string picName = string.Format("{0}.{1}", fileName, fileContentType);
-                    string picUrl = HttpContext.Current.Server.MapPath("~/App_Data/Images/") + picName;
+                    string picUrl = HttpContext.Current.Server.MapPath("~/Files/Images/") + picName;
                     image.Save(picUrl);
 
                     return picUrl;
@@ -136,6 +177,50 @@
             }
 
             return false;
+        }
+
+        [HttpPost]
+        public async Task<HttpResponseMessage> PostFormData()
+        {
+            // Check if the request contains multipart/form-data.
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+            }
+
+            string root = HttpContext.Current.Server.MapPath("~/Files/Images/");
+            var provider = new MultipartFormDataStreamProvider(root);
+
+            try
+            {
+                // Read the form data.
+                await Request.Content.ReadAsMultipartAsync(provider);
+
+                // This illustrates how to get the file names.
+                foreach (MultipartFileData file in provider.FileData)
+                {
+                    Trace.WriteLine(file.Headers.ContentDisposition.FileName);
+                    Trace.WriteLine("Server file path: " + file.LocalFileName);
+                }
+
+                // Show all the key-value pairs.
+                foreach (var key in provider.FormData.AllKeys)
+                {
+                    foreach (var val in provider.FormData.GetValues(key))
+                    {
+                        Trace.WriteLine(string.Format("{0}: {1}", key, val));
+                    }
+                }
+
+                var response = Request.CreateResponse(HttpStatusCode.Redirect);
+                response.Headers.Location = new Uri("http://localhost:50930/#/getAllImages");
+
+                return response;
+            }
+            catch (System.Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
         }
     }
 }

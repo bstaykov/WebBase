@@ -4,10 +4,10 @@ webBaseModule.factory('imagesService', ['$http', '$q', 'baseUrl', 'localhostUrl'
     function imagesService($http, $q, baseUrl, localhostUrl) {
         var url = localhostUrl;
 
-        function getAll(image) {
+        function getAll(key) {
             var deferred = $q.defer();
 
-            $http.get(url + 'api/Images/GetAll')
+            $http.get(url + 'api/Images/GetAll', { headers: { 'Authorization': "Bearer " + key }})
                 .success(function (data) {
                     deferred.resolve(data);
                 })
@@ -17,13 +17,14 @@ webBaseModule.factory('imagesService', ['$http', '$q', 'baseUrl', 'localhostUrl'
             return deferred.promise;
         }
 
-        function add(image) {
+        function add(image, title, key) {
             var deferred = $q.defer(),
                 fd = new FormData();
             fd.append('image', image);
+            fd.append('title', title);
             $http.post(url + 'api/Images/Add', fd, {
                 transformRequest: angular.identity,
-                headers: { 'Content-Type': 'multipart/form-data' }
+                headers: { 'Content-Type': undefined, 'Authorization': "Bearer " + key }
             })
                 .success(function (data) {
                     deferred.resolve(data);
@@ -49,10 +50,15 @@ webBaseModule.factory('imagesService', ['$http', '$q', 'baseUrl', 'localhostUrl'
             //return deferred.promise;
         }
 
-        function deleteById(id) {
+        function deleteById(id, key) {
             var deferred = $q.defer();
 
-            $http.post(url + 'api/Images/Delete', id)
+            $http.delete(url + 'api/Images/Delete',
+                {
+                    //data: id,
+                    params: { id: id },
+                    headers: { 'Authorization': "Bearer " + key }
+                })
                 .success(function (data) {
                     deferred.resolve(data);
                 })
@@ -62,10 +68,13 @@ webBaseModule.factory('imagesService', ['$http', '$q', 'baseUrl', 'localhostUrl'
             return deferred.promise;
         }
 
-        function deleteAll() {
+        function deleteAll(key) {
             var deferred = $q.defer();
 
-            $http.post(url + 'api/Images/DeleteAll')
+            $http.delete(url + 'api/Images/DeleteAll',
+                {
+                    headers: { 'Authorization': "Bearer " + key }
+                })
                 .success(function (data) {
                     deferred.resolve(data);
                 })
