@@ -1,4 +1,4 @@
-﻿<div ng-controller="ImagesCtrl">
+﻿<div ng-controller="AddImagesCtrl">
     <h1>Add Image</h1>
     <form name="addImage" class="form-horizontal" method="post" enctype="multipart/form-data" action="Api/Images/Add">
         <div class="form-group">
@@ -23,13 +23,16 @@
     </form>
 </div>
 
-<!--<h1>Standart</h1>
-
-<div>
+<!--<div>
+    <h1>Standart</h1>
     <form name="form1" method="post" enctype="multipart/form-data" action="api/images/PostFormData">
         <div>
             <label for="title">Title</label>
             <input name="title" type="text" />
+        </div>
+        <div>
+            <label for="info">Info</label>
+            <input name="info" type="text" />
         </div>
         <div>
             <label for="file">Image</label>

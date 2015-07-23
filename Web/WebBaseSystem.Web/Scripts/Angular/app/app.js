@@ -24,9 +24,6 @@ var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource',
         .when('/getAllImages', {
             templateUrl: 'Scripts/Angular/app/views/partials/getAllImages.html'
         })
-        .when('/delete/:id', {
-            templateUrl: 'Scripts/Angular/app/views/partials/getAllImages.html'
-        })
         .when('/sum/:firstNumber/:secondNumber', {
             templateUrl: 'Scripts/Angular/app/views/partials/sum.html'
         })

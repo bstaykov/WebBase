@@ -284,6 +284,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Scripts\Angular\app\app.js" />
+    <Content Include="Scripts\Angular\app\controllers\AddImagesCtrl.js" />
     <Content Include="Scripts\Angular\app\controllers\AuthCtrl.js" />
     <Content Include="Scripts\Angular\app\controllers\DataCtrl.js" />
     <Content Include="Scripts\Angular\app\controllers\ImagesCtrl.js" />

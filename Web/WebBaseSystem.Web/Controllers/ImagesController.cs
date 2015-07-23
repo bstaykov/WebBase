@@ -203,6 +203,9 @@
                     Trace.WriteLine("Server file path: " + file.LocalFileName);
                 }
 
+                Trace.WriteLine(provider.FormData.Get("title"));
+                Trace.WriteLine(provider.FormData.Get("info"));
+
                 // Show all the key-value pairs.
                 foreach (var key in provider.FormData.AllKeys)
                 {
