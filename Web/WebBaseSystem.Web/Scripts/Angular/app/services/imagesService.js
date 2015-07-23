@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-webBaseModule.factory('imagesService', ['$http', '$q', 'baseUrl', 'localhostUrl',
-    function imagesService($http, $q, baseUrl, localhostUrl) {
-        var url = localhostUrl;
+webBaseModule.factory('imagesService', ['$http', '$q', 'baseUrl',
+    function imagesService($http, $q, baseUrl) {
+        var url = baseUrl;
 
         function getAll(key) {
             var deferred = $q.defer();

@@ -1,9 +1,8 @@
 ﻿'use strict';
 
-webBaseModule.factory('authService', ['$http', '$q',
-    function authService($http, $q) {
-        var baseUrl = 'http://webbase.apphb.com/';
-        //var baseUrl = 'http://localhost:50930/';
+webBaseModule.factory('authService', ['$http', '$q', 'baseUrl',
+    function authService($http, $q, baseUrl) {
+        var baseUrl = baseUrl;
 
         function register(user) {
             var deferred = $q.defer();

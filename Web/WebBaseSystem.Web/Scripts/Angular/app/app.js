@@ -36,7 +36,7 @@ var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource',
 
         $routeProvider.otherwise({ redirectTo: '/' });
     }])
-    .constant('localhostUrl', 'http://localhost:50930/')
+    //.constant('baseUrl', 'http://localhost:50930/')
     .constant('baseUrl', 'http://webbase.apphb.com/')
     .constant('author', 'Boycho Staykov')
     .constant('email', 'boycho.staykov@gmail.com');
