@@ -9,6 +9,9 @@ var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource',
         .when('/home', {
             templateUrl: 'Scripts/Angular/app/views/partials/homePage.html',
         })
+        .when('/testHistory/:controllerName/:actionName', {
+            templateUrl: 'Scripts/Angular/app/views/partials/testHistoryPage.html',
+        })
         .when('/register', {
             templateUrl: 'Scripts/Angular/app/views/partials/register.html'
         })
@@ -16,7 +19,7 @@ var webBaseModule = angular.module('webBaseModule', ['ngSanitize', 'ngResource',
             templateUrl: 'Scripts/Angular/app/views/partials/login.html'
         })
         .when('/logout', {
-            templateUrl: 'Scripts/Angular/app/views/partials/homePage.html'
+            templateUrl: 'Scripts/Angular/app/views/partials/homePage.html',
         })
         .when('/addImage', {
             templateUrl: 'Scripts/Angular/app/views/partials/addImage.html'
