@@ -55,7 +55,8 @@
                     var extensionStartIndex = fileName.LastIndexOf('.') + 1;
                     var extensionEndIndex = fileName.LastIndexOf('"');
                     var extension = fileName.Substring(extensionStartIndex, extensionEndIndex - extensionStartIndex);
-                    if(this.IsValidExtension(extension)){
+                    if (this.IsValidExtension(extension))
+                    {
                         newName = file.LocalFileName + '.' + extension;
                         File.Move(file.LocalFileName, newName);
                         string url = newName.Substring(newName.LastIndexOf("\\") + 1);
@@ -73,7 +74,8 @@
                 {
                     foreach (var val in provider.FormData.GetValues(key))
                     {
-                        if (string.IsNullOrEmpty(val) == false) {
+                        if (string.IsNullOrEmpty(val) == false) 
+                        {
                             picture.Title = val;
                             isTitleCorrect = true;
                         }
@@ -136,49 +138,6 @@
             return this.Ok();
         }
 
-        private string SavePic(HttpPostedFileBase newImage)
-        {
-            if (newImage != null)
-            {
-                string fileContentType = newImage.ContentType.Substring(newImage.ContentType.IndexOf('/') + 1);
-                if (this.IsValidExtension(fileContentType) && newImage.ContentLength <= 2048000)
-                {
-                    Image image = Image.FromStream(newImage.InputStream);
-                    string fileName = Guid.NewGuid().ToString();
-                    string picName = string.Format("{0}.{1}", fileName, fileContentType);
-                    string picUrl = HttpContext.Current.Server.MapPath("~/Files/Images/") + picName;
-                    image.Save(picUrl);
-
-                    return picUrl;
-                }
-            }
-
-            return null;
-        }
-
-        private Image ResizeImage(Image imgToResize, Size size)
-        {
-            return (Image)(new Bitmap(imgToResize, size));
-        }
-
-        private bool IsValidExtension(string fileExtension)
-        {
-            var validFileExtensions = new string[] { "jpg", "jpeg", "bmp", "gif", "png" };
-            if (fileExtension.Length > 0)
-            {
-                for (var j = 0; j < validFileExtensions.Length; j++)
-                {
-                    var currentExtension = validFileExtensions[j];
-                    if (fileExtension.ToLower() == currentExtension.ToLower())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
         [HttpPost]
         public async Task<HttpResponseMessage> PostFormData()
         {
@@ -224,6 +183,49 @@
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
+        }
+
+        private string SavePic(HttpPostedFileBase newImage)
+        {
+            if (newImage != null)
+            {
+                string fileContentType = newImage.ContentType.Substring(newImage.ContentType.IndexOf('/') + 1);
+                if (this.IsValidExtension(fileContentType) && newImage.ContentLength <= 2048000)
+                {
+                    Image image = Image.FromStream(newImage.InputStream);
+                    string fileName = Guid.NewGuid().ToString();
+                    string picName = string.Format("{0}.{1}", fileName, fileContentType);
+                    string picUrl = HttpContext.Current.Server.MapPath("~/Files/Images/") + picName;
+                    image.Save(picUrl);
+
+                    return picUrl;
+                }
+            }
+
+            return null;
+        }
+
+        private Image ResizeImage(Image imgToResize, Size size)
+        {
+            return (Image)(new Bitmap(imgToResize, size));
+        }
+
+        private bool IsValidExtension(string fileExtension)
+        {
+            var validFileExtensions = new string[] { "jpg", "jpeg", "bmp", "gif", "png" };
+            if (fileExtension.Length > 0)
+            {
+                for (var j = 0; j < validFileExtensions.Length; j++)
+                {
+                    var currentExtension = validFileExtensions[j];
+                    if (fileExtension.ToLower() == currentExtension.ToLower())
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }
